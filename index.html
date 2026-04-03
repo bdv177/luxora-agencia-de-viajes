@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXORA | Agencia de Viajes Premium</title>
+  <meta name="description" content="Agencia de viajes premium para clientes de alto nivel. Experiencias exclusivas, concierge 24/7 y destinos curados alrededor del mundo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --panel: rgba(255,255,255,0.72);
+      --panel-strong: rgba(255,255,255,0.88);
+      --text: #171717;
+      --muted: #6f6b64;
+      --line: rgba(23,23,23,0.08);
+      --gold: #a88347;
+      --gold-soft: rgba(168,131,71,0.14);
+      --shadow: 0 24px 60px rgba(0,0,0,0.08);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', system-ui, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(168,131,71,0.10), transparent 22%),
+        radial-gradient(circle at 85% 10%, rgba(0,0,0,0.05), transparent 18%),
+        linear-gradient(180deg, #fbfaf7 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(246,244,239,0.78);
+      border-bottom: 1px solid rgba(23,23,23,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 84px;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      font-size: 0.93rem;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #111 0%, #2b2b2b 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), var(--shadow);
+    }
+
+    .brand-mark svg { width: 26px; height: 26px; }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: 0.28s ease;
+    }
+
+    .nav-link:hover,
+    .nav-item:hover > .nav-link {
+      color: var(--text);
+      background: rgba(255,255,255,0.68);
+    }
+
+    .submenu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      min-width: 260px;
+      background: var(--panel-strong);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(23,23,23,0.06);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 10px;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: 0.25s ease;
+    }
+
+    .nav-item:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .submenu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .submenu a:hover {
+      background: rgba(168,131,71,0.08);
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn,
+    .btn-outline {
+      border: 0;
+      cursor: pointer;
+      padding: 14px 20px;
+      border-radius: 999px;
+      transition: 0.28s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #151515 0%, #333 100%);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.65);
+      color: var(--text);
+      border: 1px solid rgba(23,23,23,0.08);
+    }
+
+    .hero {
+      padding: 44px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.65);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-copy {
+      padding: 56px;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(23,23,23,0.06);
+      border-radius: 999px;
+      width: fit-content;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 20px 0 18px;
+      font-size: clamp(2.9rem, 6vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 10ch;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .trust-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(23,23,23,0.05);
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.24rem;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      min-height: 700px;
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+      grid-template-rows: 1.55fr 0.85fr;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(168,131,71,0.22), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(246,244,239,0.72) 100%);
+    }
+
+    .art-scene,
+    .curation-card,
+    .mini-card {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(23,23,23,0.06);
+      background: rgba(255,255,255,0.82);
+    }
+
+    .art-scene {
+      min-height: 100%;
+      padding: 0;
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .bottom-visuals {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .curation-card,
+    .mini-card {
+      padding: 24px;
+    }
+
+    .mini-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(17,17,17,0.95), rgba(48,48,48,0.95));
+      color: white;
+    }
+
+    .mini-card small,
+    .curation-card small {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .mini-card small { color: rgba(255,255,255,0.68); }
+
+    .mini-card strong,
+    .curation-card strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    .mini-card p,
+    .curation-card p {
+      margin: 12px 0 0;
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .mini-card p { color: rgba(255,255,255,0.72); }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .section-head p {
+      max-width: 52ch;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .destinations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .destination-card,
+    .service-card,
+    .experience-card,
+    .testimonial,
+    .contact-panel,
+    .booking-panel {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .destination-media {
+      aspect-ratio: 4 / 4.1;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(168,131,71,0.12), rgba(0,0,0,0.03));
+    }
+
+    .destination-content {
+      padding: 22px;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .destination-content h3,
+    .service-card h3,
+    .experience-card h3,
+    .testimonial h3 {
+      margin: 14px 0 10px;
+      font-size: 1.32rem;
+      letter-spacing: -0.03em;
+    }
+
+    .destination-content p,
+    .service-card p,
+    .experience-card p,
+    .testimonial p,
+    .contact-panel p,
+    .booking-panel p,
+    .footer p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .services-grid,
+    .experience-grid,
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card,
+    .experience-card,
+    .testimonial {
+      padding: 26px;
+    }
+
+    .icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(17,17,17,1), rgba(57,57,57,0.92));
+      color: white;
+      margin-bottom: 18px;
+    }
+
+    .itinerary {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .experience-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .quote-mark {
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-panel,
+    .booking-panel {
+      padding: 32px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .field {
+      width: 100%;
+      border: 1px solid rgba(23,23,23,0.08);
+      background: rgba(255,255,255,0.78);
+      border-radius: 16px;
+      padding: 15px 16px;
+      font: inherit;
+      color: var(--text);
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    .field:focus {
+      border-color: rgba(168,131,71,0.45);
+      box-shadow: 0 0 0 4px rgba(168,131,71,0.08);
+    }
+
+    textarea.field {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .footer {
+      padding: 28px 0 48px;
+    }
+
+    .footer-panel {
+      background: linear-gradient(145deg, #121212 0%, #2d2d2d 100%);
+      color: white;
+      border-radius: 30px;
+      padding: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer p { color: rgba(255,255,255,0.68); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    svg { display: block; }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .itinerary,
+      .contact-grid,
+      .experience-showcase,
+      .services-grid,
+      .experience-grid,
+      .testimonials-grid,
+      .destinations {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy,
+      .hero-visual { min-height: auto; }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 14px 0;
+      }
+
+      .nav-menu {
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+        background: rgba(255,255,255,0.62);
+        border-radius: 22px;
+        padding: 10px;
+      }
+
+      .submenu {
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+        min-width: auto;
+        box-shadow: none;
+        background: rgba(255,255,255,0.76);
+        margin-top: 8px;
+      }
+
+      .trust-row,
+      .destinations,
+      .services-grid,
+      .experience-grid,
+      .testimonials-grid,
+      .itinerary,
+      .experience-showcase,
+      .contact-grid,
+      .bottom-visuals,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 24px), var(--max)); }
+      .nav-actions { width: 100%; justify-content: space-between; }
+      .btn, .btn-outline { padding: 13px 16px; }
+      h1 { max-width: 100%; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="LUXORA Inicio">
+        <span class="brand-mark">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 46L32 14L49 46" stroke="url(#g1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 36H40" stroke="url(#g1)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="32" cy="14" r="4" fill="#D8B47A"/>
+            <defs>
+              <linearGradient id="g1" x1="15" y1="14" x2="49" y2="46" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F1D39E"/>
+                <stop offset="1" stop-color="#9E7741"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span>LUXORA</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="#inicio">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#destinos">Destinos</a>
+          <ul class="submenu">
+            <li><a href="#destinos">Islas Privadas</a></li>
+            <li><a href="#destinos">Europa Curada</a></li>
+            <li><a href="#destinos">Safari & Naturaleza</a></li>
+            <li><a href="#destinos">Yates & Expediciones</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <ul class="submenu">
+            <li><a href="#servicios">Concierge 24/7</a></li>
+            <li><a href="#servicios">Vuelos Privados</a></li>
+            <li><a href="#servicios">Wellness Retreats</a></li>
+            <li><a href="#servicios">Viajes Corporativos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#experiencias">Experiencias</a>
+          <ul class="submenu">
+            <li><a href="#experiencias">Luna de Miel</a></li>
+            <li><a href="#experiencias">Family Legacy Trips</a></li>
+            <li><a href="#experiencias">Arte & Gastronomía</a></li>
+            <li><a href="#experiencias">Bleisure Executive</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contacto" class="btn-outline">Agenda privada</a>
+        <a href="#reservar" class="btn">Diseñar viaje</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div>
+            <span class="eyebrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2L14.8 8.2L21 11L14.8 13.8L12 20L9.2 13.8L3 11L9.2 8.2L12 2Z" fill="#A88347"/>
+              </svg>
+              Travel design para clientes premium
+            </span>
+            <h1>Viajes extraordinarios con elegancia silenciosa.</h1>
+            <p class="lead">Creamos itinerarios de lujo con una ejecución impecable: destinos curados, atención personalizada, acceso preferencial y experiencias pensadas para quienes valoran privacidad, tiempo y excelencia.</p>
+            <div class="hero-actions">
+              <a href="#reservar" class="btn">Solicitar propuesta</a>
+              <a href="#destinos" class="btn-outline">Ver colecciones</a>
+            </div>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-card">
+              <strong>24/7</strong>
+              <span>Concierge global y soporte en tiempo real.</span>
+            </div>
+            <div class="trust-card">
+              <strong>+180</strong>
+              <span>Partners premium en hoteles, villas y experiencias.</span>
+            </div>
+            <div class="trust-card">
+              <strong>100%</strong>
+              <span>Itinerarios personalizados, sin plantillas genéricas.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="art-scene" aria-label="Visual editorial de viaje premium">
+            <svg viewBox="0 0 720 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paisaje de costa, arquitectura y yate de lujo">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F7F2E8"/>
+                  <stop offset="100%" stop-color="#E6DACE"/>
+                </linearGradient>
+                <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#D3C1A7"/>
+                  <stop offset="100%" stop-color="#AB8B62"/>
+                </linearGradient>
+                <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FBFAF7"/>
+                  <stop offset="100%" stop-color="#D5C7B8"/>
+                </linearGradient>
+              </defs>
+              <rect width="720" height="760" fill="url(#sky)"/>
+              <circle cx="568" cy="150" r="68" fill="#E3C08A" opacity="0.55"/>
+              <path d="M0 510C80 470 165 452 258 460C374 470 452 553 540 544C604 538 661 514 720 486V760H0V510Z" fill="url(#sea)"/>
+              <path d="M0 540C119 498 220 520 316 565C375 592 436 602 520 577C599 554 655 525 720 485V760H0V540Z" fill="#C7AF8A" opacity="0.55"/>
+              <path d="M92 430C130 370 176 312 244 266C316 217 394 200 468 208C568 218 624 294 642 385C653 441 648 481 642 528H92V430Z" fill="#E8DED0"/>
+              <path d="M142 453C176 405 210 364 268 324C327 283 390 269 452 276C522 284 581 330 607 396C620 429 621 465 615 515H142V453Z" fill="#EFE6DA"/>
+              <rect x="244" y="185" width="194" height="224" rx="26" fill="url(#stone)"/>
+              <rect x="272" y="214" width="61" height="170" rx="18" fill="#E2D4C4"/>
+              <rect x="350" y="214" width="61" height="170" rx="18" fill="#E2D4C4"/>
+              <path d="M226 409H457V466C457 482 444 495 428 495H255C239 495 226 482 226 466V409Z" fill="#F8F5EF"/>
+              <rect x="216" y="470" width="252" height="18" rx="9" fill="#D5C3A6"/>
+              <path d="M112 522H414C460 522 501 536 535 564L579 601H173C137 601 108 572 108 536C108 528 104 522 112 522Z" fill="#FAF7F2"/>
+              <path d="M410 563C456 536 514 523 589 532C623 536 654 543 684 556C657 585 610 604 556 604H360L410 563Z" fill="#F3ECE2"/>
+              <path d="M450 568H586C610 568 633 579 649 598L672 624H430L450 568Z" fill="#1B1B1B"/>
+              <path d="M476 542L557 538C587 537 617 547 640 567L660 584H453L476 542Z" fill="#FAF8F4"/>
+              <path d="M475 552H558C583 552 606 560 625 575L634 582H461L475 552Z" fill="#FFFFFF"/>
+              <circle cx="484" cy="619" r="18" fill="#B29164"/>
+              <circle cx="611" cy="619" r="18" fill="#B29164"/>
+              <path d="M53 628C126 596 233 603 313 645C381 681 487 700 573 676C626 662 673 645 720 615V760H53V628Z" fill="#D9C6AE" opacity="0.5"/>
+            </svg>
+          </div>
+
+          <div class="bottom-visuals">
+            <div class="curation-card">
+              <small>Signature Curation</small>
+              <strong>Hoteles icónicos, villas privadas y rutas diseñadas a medida.</strong>
+              <p>Cada detalle está orquestado para ofrecer fluidez, privacidad y una sensación de lujo sereno.</p>
+            </div>
+            <div class="mini-card">
+              <div>
+                <small>Private Access</small>
+                <strong>Fast-track, upgrades y experiencias irrepetibles.</strong>
+              </div>
+              <svg width="54" height="54" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path d="M18 44L46 16" stroke="url(#goldArrow)" stroke-width="4" stroke-linecap="round"/>
+                <path d="M24 16H46V38" stroke="url(#goldArrow)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                  <linearGradient id="goldArrow" x1="18" y1="16" x2="46" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#F1D39E"/>
+                    <stop offset="1" stop-color="#9E7741"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="destinos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="badge">Destinos curados</span>
+            <h2>Una colección pensada para viajeros exigentes.</h2>
+          </div>
+          <p>Diseñamos viajes que equilibran exclusividad, estética y profundidad cultural. No vendemos paquetes; construimos escenarios memorables.</p>
+        </div>
+
+        <div class="destinations">
+          <article class="destination-card">
+            <div class="destination-media">
+              <svg viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isla privada tropical">
+                <rect width="600" height="620" fill="#F5EEE3"/>
+                <circle cx="465" cy="115" r="58" fill="#E3C08A" opacity="0.6"/>
+                <path d="M0 405C87 355 177 338 255 346C349 356 435 438 600 398V620H0V405Z" fill="#D4C3AA"/>
+                <path d="M0 440C96 398 171 406 241 441C306 473 382 504 491 471C530 459 565 442 600 420V620H0V440Z" fill="#B69465" opacity="0.45"/>
+                <path d="M217 300C269 247 356 247 414 288C442 309 463 338 474 374H178C184 347 197 321 217 300Z" fill="#F7F3EC"/>
+                <rect x="230" y="244" width="124" height="95" rx="14" fill="#FCFAF6"/>
+                <path d="M200 341H382V373H200V341Z" fill="#F1E7D7"/>
+                <path d="M137 394C194 354 294 354 351 394C372 409 389 430 401 456H87C95 432 112 410 137 394Z" fill="#FAF7F2"/>
+                <path d="M430 244C444 213 472 184 514 165" stroke="#A88347" stroke-width="8" stroke-linecap="round"/>
+                <path d="M479 155C489 174 501 193 510 211" stroke="#A88347" stroke-width="6" stroke-linecap="round"/>
+                <path d="M461 177C479 186 498 196 517 205" stroke="#A88347" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="destination-content">
+              <div class="meta"><span>Maldivas · Seychelles · Fiji</span><span>7 noches+</span></div>
+              <h3>Islas Privadas</h3>
+              <p>Villas sobre el agua, yates privados, cenas íntimas y una experiencia de descanso con absoluta privacidad.</p>
+            </div>
+          </article>
+
+          <article class="destination-card">
+            <div class="destination-media">
+              <svg viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Europa elegante y arquitectura">
+                <rect width="600" height="620" fill="#F3EDE4"/>
+                <circle cx="452" cy="118" r="54" fill="#DAB680" opacity="0.55"/>
+                <path d="M0 468C116 430 237 430 347 472C428 503 512 507 600 476V620H0V468Z" fill="#DCCDB8"/>
+                <rect x="155" y="207" width="110" height="245" rx="12" fill="#FCFAF6"/>
+                <rect x="284" y="165" width="150" height="287" rx="12" fill="#F8F2EA"/>
+                <rect x="452" y="252" width="56" height="200" rx="10" fill="#FBF8F3"/>
+                <rect x="179" y="232" width="20" height="178" rx="10" fill="#E9DCCB"/>
+                <rect x="221" y="232" width="20" height="178" rx="10" fill="#E9DCCB"/>
+                <rect x="314" y="190" width="26" height="220" rx="12" fill="#E6D7C3"/>
+                <rect x="376" y="190" width="26" height="220" rx="12" fill="#E6D7C3"/>
+                <path d="M124 451H530V473H124V451Z" fill="#C8AE84"/>
+              </svg>
+            </div>
+            <div class="destination-content">
+              <div class="meta"><span>París · Lake Como · Côte d’Azur</span><span>5 noches+</span></div>
+              <h3>Europa Curada</h3>
+              <p>Arte, compras privadas, gastronomía de autor y estancias en propiedades legendarias con acceso preferencial.</p>
+            </div>
+          </article>
+
+          <article class="destination-card">
+            <div class="destination-media">
+              <svg viewBox="0 0 600 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Safari y naturaleza">
+                <rect width="600" height="620" fill="#F5EEE2"/>
+                <circle cx="474" cy="132" r="56" fill="#D9AF6E" opacity="0.55"/>
+                <path d="M0 404C88 349 153 335 235 346C330 358 412 430 600 398V620H0V404Z" fill="#D9C5A7"/>
+                <path d="M0 468C97 434 174 441 268 484C351 521 443 530 600 482V620H0V468Z" fill="#B88F5D" opacity="0.38"/>
+                <path d="M160 404C160 351 203 308 255 308H314C374 308 422 356 422 416V421H160V404Z" fill="#FAF7F2"/>
+                <path d="M242 329L288 262L333 329" stroke="#B48D57" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M210 438H376" stroke="#D0B185" stroke-width="12" stroke-linecap="round"/>
+                <path d="M448 350C470 330 497 327 522 340C545 352 561 374 562 399" stroke="#A88347" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="523" cy="401" r="9" fill="#A88347"/>
+              </svg>
+            </div>
+            <div class="destination-content">
+              <div class="meta"><span>Kenia · Tanzania · Botswana</span><span>8 noches+</span></div>
+              <h3>Safari & Naturaleza</h3>
+              <p>Campamentos de ultra lujo, vuelos escénicos y experiencias inmersivas para reconectar con el paisaje en grande.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="badge">Servicios premium</span>
+            <h2>Todo lo que un viaje sofisticado necesita.</h2>
+          </div>
+          <p>Nuestra promesa es simple: menos fricción, más tiempo de calidad y una ejecución discreta, eficiente y perfectamente coordinada.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3L19 7V12C19 16.2 16.1 19.7 12 21C7.9 19.7 5 16.2 5 12V7L12 3Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <h3>Concierge 24/7</h3>
+            <p>Asistencia global antes, durante y después del viaje. Cambios, reservas especiales y soporte prioritario sin complicaciones.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M2 16L22 12L2 8L5 12L2 16Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Vuelos Privados & First</h3>
+            <p>Coordinación de jets privados, primeras clases y traslados terrestres ejecutivos con tiempos optimizados.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21C16.418 21 20 17.418 20 13C20 8.582 12 3 12 3C12 3 4 8.582 4 13C4 17.418 7.582 21 12 21Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <h3>Wellness Retreats</h3>
+            <p>Programas de descanso, longevidad, spa médico y reconexión emocional en propiedades seleccionadas por su excelencia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiencias">
+      <div class="container itinerary">
+        <div>
+          <div class="section-head" style="margin-bottom:18px;">
+            <div>
+              <span class="badge">Experiencias signature</span>
+              <h2>Diseñadas según el momento de vida de cada cliente.</h2>
+            </div>
+          </div>
+          <div class="experience-grid">
+            <article class="experience-card">
+              <h3>Luna de miel editorial</h3>
+              <p>Escenarios íntimos, detalles personalizados, cenas privadas y fotografía curada en destinos de ensueño.</p>
+            </article>
+            <article class="experience-card">
+              <h3>Family legacy trips</h3>
+              <p>Viajes multigeneracionales pensados para crear recuerdos de valor emocional y logística impecable.</p>
+            </article>
+            <article class="experience-card">
+              <h3>Bleisure ejecutivo</h3>
+              <p>Combinamos agenda de negocios con pausas de bienestar, gastronomía y experiencias memorables.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="experience-showcase">
+          <article class="experience-card">
+            <small style="display:block;color:var(--gold);font-weight:800;letter-spacing:0.06em;text-transform:uppercase;">Private Dining</small>
+            <h3>Mesas reservadas donde no cualquiera entra.</h3>
+            <p>Acceso a chefs, sommeliers y escenarios exclusivos para cenas que se sienten irrepetibles.</p>
+          </article>
+          <article class="experience-card" style="background:linear-gradient(180deg, #151515, #303030); color:white;">
+            <small style="display:block;color:#E0C28E;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;">Yachts & Expeditions</small>
+            <h3>Mar, exploración y lujo sin ruido.</h3>
+            <p style="color:rgba(255,255,255,0.72);">Rutas privadas, tripulación premium y experiencias que combinan aventura con sofisticación.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="badge">Testimonios</span>
+            <h2>Confianza construida a partir de detalles impecables.</h2>
+          </div>
+          <p>Trabajamos con perfiles que valoran la calidad silenciosa: familias, empresarios y viajeros que saben reconocer una ejecución extraordinaria.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial">
+            <div class="quote-mark">“</div>
+            <h3>Una experiencia impecable</h3>
+            <p>“Todo fluyó con una naturalidad extraordinaria. Desde el traslado hasta las reservas privadas, cada detalle se sintió pensado para nosotros.”</p>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">“</div>
+            <h3>Lujo con discreción</h3>
+            <p>“No era un viaje llamativo; era elegante, sereno y perfectamente coordinado. Exactamente lo que buscábamos.”</p>
+          </article>
+          <article class="testimonial">
+            <div class="quote-mark">“</div>
+            <h3>Atención que anticipa</h3>
+            <p>“LUXORA entendió nuestro estilo antes de que termináramos de explicarlo. Eso es verdadero servicio premium.”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <article class="contact-panel">
+          <span class="badge">Contacto privado</span>
+          <h2 style="margin:18px 0 12px; font-size:clamp(2rem,4vw,3rem); letter-spacing:-0.04em; line-height:1;">Conversemos sobre el viaje ideal.</h2>
+          <p>Cuéntanos el tipo de experiencia que buscas y nuestro equipo curará una propuesta con el nivel de detalle, estilo y servicio que esperas.</p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon-wrap" style="margin:0; width:46px; height:46px; border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M4 8L12 13L20 8" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Email concierge</strong>
+                <span style="color:var(--muted);">hello@luxora-travel.com</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-wrap" style="margin:0; width:46px; height:46px; border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 4H18V20L12 16L6 20V4Z" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Agenda privada</strong>
+                <span style="color:var(--muted);">Lunes a sábado · atención personalizada</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-wrap" style="margin:0; width:46px; height:46px; border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 21C16.418 21 20 17.418 20 13C20 8.582 12 3 12 3C12 3 4 8.582 4 13C4 17.418 7.582 21 12 21Z" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Destinos globales</strong>
+                <span style="color:var(--muted);">Planificación internacional con partners premium</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="booking-panel" id="reservar">
+          <span class="badge">Solicitud de propuesta</span>
+          <h3 style="margin:18px 0 10px; font-size:1.7rem; letter-spacing:-0.04em;">Diseñemos tu próximo viaje.</h3>
+          <p>Déjanos algunos detalles y te contactaremos con una propuesta personalizada.</p>
+
+          <form class="form-grid">
+            <input class="field" type="text" placeholder="Nombre completo" />
+            <input class="field" type="email" placeholder="Correo electrónico" />
+            <input class="field" type="text" placeholder="Destino o inspiración" />
+            <input class="field" type="text" placeholder="Fechas estimadas" />
+            <select class="field">
+              <option>Tipo de viaje</option>
+              <option>Luna de miel</option>
+              <option>Familiar premium</option>
+              <option>Bleisure ejecutivo</option>
+              <option>Wellness retreat</option>
+              <option>Expedición privada</option>
+            </select>
+            <select class="field">
+              <option>Rango de inversión</option>
+              <option>USD 8,000 - 15,000</option>
+              <option>USD 15,000 - 30,000</option>
+              <option>USD 30,000 - 60,000</option>
+              <option>USD 60,000+</option>
+            </select>
+            <textarea class="field full" placeholder="Cuéntanos qué experiencia quieres vivir, cuántas personas viajan y cualquier preferencia especial."></textarea>
+            <button class="btn full" type="button">Enviar solicitud</button>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-panel">
+        <div>
+          <div class="brand" style="color:white; margin-bottom:10px;">
+            <span class="brand-mark" style="background:rgba(255,255,255,0.08); box-shadow:none; border:1px solid rgba(255,255,255,0.08);">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M15 46L32 14L49 46" stroke="url(#g2)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 36H40" stroke="url(#g2)" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="32" cy="14" r="4" fill="#D8B47A"/>
+                <defs>
+                  <linearGradient id="g2" x1="15" y1="14" x2="49" y2="46" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#F1D39E"/>
+                    <stop offset="1" stop-color="#9E7741"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
+            <span>LUXORA</span>
+          </div>
+          <p>Travel design premium con una estética minimalista, servicio impecable y experiencias hechas a medida.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#destinos">Destinos</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#experiencias">Experiencias</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
